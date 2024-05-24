@@ -1,35 +1,97 @@
-document.getElementById("ticket-form").addEventListener("submit", function(event) {
-    event.preventDefault();
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+    padding: 20px;
+    background-image: url('tkt.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+  }
   
-    // Gather user input
-    var name = document.getElementById("name").value;
-    var seat = document.getElementById("seat").value;
-    var date = document.getElementById("date").value;
-    var from = document.getElementById("from").value;
-    var to = document.getElementById("to").value;
+  .background-img {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 50px auto;
+  }
   
-    // Generate ticket ID (simple demonstration)
-    var ticketId = "T" + Math.floor(Math.random() * 10000);
+  h2 {
+    text-align: center;
+    color: #333;
+  }
   
-    // Add ticket details to history table
-    var tableBody = document.getElementById("history-table-body");
-    var newRow = tableBody.insertRow();
-    newRow.innerHTML = "<td>" + ticketId + "</td><td>" + name + "</td><td>" + seat + "</td><td>" + date + "</td><td>" + from + "</td><td>" + to + "</td><td>Booked</td><td><button class='delete-btn' data-ticket-id='" + ticketId + "'>Delete</button></td>";
+  .ticket-section {
+    max-width: 400px;
+    margin: 0 auto;
+  }
   
-    // Display alert for successful booking and generated ticket ID
-    alert("Ticket with ID " + ticketId + " has been booked successfully.");
-    document.getElementById("ticket-form").reset();
-  });
+  input[type="text"], input[type="date"], input[type="submit"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
   
-  document.getElementById("view-history-btn").addEventListener("click", function() {
-    document.getElementById("ticket-history").style.display = "block";
-  });
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
   
-  document.getElementById("ticket-history").addEventListener("click", function(event) {
-    if (event.target.classList.contains('delete-btn')) {
-        var ticketIdToDelete = event.target.getAttribute('data-ticket-id');
-        // Delete ticket logic (for demonstration, we'll remove the row from table)
-        event.target.closest('tr').remove();
-        alert("Ticket with ID " + ticketIdToDelete + " has been deleted.");
-    }
-  });
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  #ticket-history {
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+  }
+  #view-history-btn{
+    background-color:rgb(24, 24, 92);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  
+  }
+  
+  #history-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  #history-table th, #history-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  #history-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  #history-table td {
+    text-align: center;
+  }
+  
+  .delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
